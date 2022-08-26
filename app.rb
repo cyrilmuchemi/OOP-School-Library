@@ -8,6 +8,7 @@ class App
     @people = []
     @rentals = []
   end
+
   def menu
     puts 'Please choose an option by entering a number:'
     puts '1 - List all books'
@@ -18,6 +19,7 @@ class App
     puts '6 - List all rentals for a given person id'
     puts '7 - Exit'
   end
+
   def check(choice)
     case choice
     when 1
@@ -38,7 +40,7 @@ class App
   def run
     choice = 0
     while choice != 7
-      menu()
+      menu
       puts
       print '[Enter 1-7] '
       choice = gets.chomp.strip.to_i
@@ -46,20 +48,23 @@ class App
       puts
     end
   end
+
   def add_book
     puts
-    print "Title: "
+    print 'Title: '
     title = gets.chomp.strip.capitalize
-    print "Author: "
+    print 'Author: '
     author = gets.chomp.strip.capitalize
     @books.push(Book.new(title, author))
   end
+
   def list_books
     puts
     @books.each_with_index do |book, index|
       puts "#{index}) Title: \"#{book.title}\", Author: #{book.author}"
     end
   end
+
   def create_person
     puts
     print 'Do you want to create a student (1) or a teacher (2)? [Input the number]: '
@@ -71,6 +76,7 @@ class App
       create_teacher
     end
   end
+
   def create_teacher
     puts
     print 'Age: '
@@ -86,6 +92,7 @@ class App
     @people << Teacher.new(age, specialization, name)
     puts 'Person created successfully'
   end
+
   def create_student
     puts
     print 'Age: '
@@ -107,6 +114,7 @@ class App
     @people << Student.new(age, nil, name, parent_permission: permission)
     puts 'Person created successfully'
   end
+
   def create_rental
     puts
     puts 'Select a book from the following list by number'
@@ -132,6 +140,7 @@ class App
     person.add_rental(date, book)
     puts 'Rental created successfully'
   end
+
   def list_people
     puts
     @people.each_with_index do |person, index|
