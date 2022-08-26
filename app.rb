@@ -2,8 +2,9 @@ require_relative 'book'
 require_relative 'student'
 require_relative 'teacher'
 require_relative 'rental'
+
 class App
-  def initialize()
+  def initialize
     @books = []
     @people = []
     @rentals = []
@@ -120,25 +121,22 @@ class App
     puts 'Select a book from the following list by number'
     list_books
     book_choice = gets.chomp.to_i
-    while book_choice < 0 || book_choice >= @books.length
-      print "Please enter a number within 0 - #{(@books.length - 1)} range: "
+    while book_choice.negative? || book_choice >= @books.length
+      print "Please enter a number within 0 - #{@books.length - 1} range: "
       book_choice = gets.chomp.to_i
     end
     book = @books[book_choice]
-    puts
-    puts
     puts 'Select a person from the following list by number (not id)'
     list_people
     person_choice = gets.chomp.to_i
-    while person_choice < 0 || person_choice >= @people.length
-      print "Please enter a number within 0 - #{(@people.length - 1)} range: "
+    while person_choice.negative? || person_choice >= @people.length
+      print "Please enter a number within 0 - #{@people.length - 1} range: "
       person_choice = gets.chomp.to_i
     end
     person = @people[person_choice]
-    print 'Enter date of booking: (yyyy-mm-dd)'
+    print 'Enter date of booking: (yyyy/mm/dd) : '
     date = gets.chomp.strip
     person.add_rental(date, book)
-    puts 'Rental created successfully'
   end
 
   def list_people
