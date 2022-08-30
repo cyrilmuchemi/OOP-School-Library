@@ -1,4 +1,4 @@
-require_relative 'creator';
+require_relative 'creator'
 
 class App
   def initialize
@@ -6,6 +6,7 @@ class App
     @people = []
     @rentals = []
   end
+
   def menu
     puts 'Please choose an option by entering a number:'
     puts '1 - List all books'
@@ -22,18 +23,18 @@ class App
     when 1
       List.list_books(@books)
     when 2
-  
+
       List.list_people(@people)
     when 3
       create_person
     when 4
-  
+
       Create.create_book(@books)
     when 5
-    
+
       Create.create_rental(@people, @books)
     when 6
-    
+
       List.list_rentals(@people)
     end
   end
@@ -56,8 +57,8 @@ class App
     choice = gets.chomp.strip.to_i
     case choice
     when 1
-  
-     Create.create_student(@people)
+
+      Create.create_student(@people)
     when 2
       Create.create_teacher(@people)
     end
