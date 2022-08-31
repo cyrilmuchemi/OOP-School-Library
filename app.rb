@@ -1,10 +1,12 @@
 require_relative 'creator'
+require_relative 'database'
+require_relative 'loaddata'
 
 class App
   def initialize
-    @books = []
-    @people = []
-    @rentals = []
+    @books = LoadData.load_books
+    @people = LoadData.load_people
+    @rentals = LoadData.load_rentals(@books, @people)
   end
 
   def menu
@@ -32,7 +34,7 @@ class App
       Create.create_book(@books)
     when 5
 
-      Create.create_rental(@people, @books)
+      Create.create_rental(@people, @books, @rentals)
     when 6
 
       List.list_rentals(@people)
@@ -49,6 +51,7 @@ class App
       check(choice)
       puts
     end
+    Database.save(@books, @people, @rentals)
   end
 
   def create_person
