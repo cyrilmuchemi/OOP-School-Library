@@ -11,6 +11,7 @@ class Create
     author = gets.chomp.strip.capitalize
     books.push(Book.new(title, author))
   end
+
   def self.create_student(people)
     puts
     print 'Age: '
@@ -32,6 +33,7 @@ class Create
     people << Student.new(age, nil, name, parent_permission: permission)
     puts 'Person created successfully'
   end
+
   def self.create_teacher(people)
     puts
     print 'Age: '
@@ -67,7 +69,7 @@ class Create
     person = people[person_choice]
     print 'Enter date of booking: (yyyy/mm/dd) : '
     date = gets.chomp.strip
-  
+
     rentals << person.add_rental(date, book)
   end
 end
