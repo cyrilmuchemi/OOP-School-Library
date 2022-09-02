@@ -3,7 +3,7 @@ require_relative 'list'
 require_relative 'student'
 require_relative 'teacher'
 class Create
-  def self.create_book(books)
+  def create_book(books)
     puts
     print 'Title: '
     title = gets.chomp.strip.capitalize
